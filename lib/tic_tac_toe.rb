@@ -50,27 +50,27 @@ class TicTacToe
     turn_count.even? ? "X" : "O"
   end
 
-#   def turn
-#     puts "Please enter a number (1-9):"
-#     user_input = gets.strip
-#     index = input_to_index(user_input)
-#     if valid_move?(index)
-#       token = current_player
-#       move(index, token)
-#     else
-#       turn
-#     end
-#     display_board
-#   end
-# def on_game_board?(index)
-#   valid_indexes = [0,1,2,3,4,5,6,7,8]
+  def turn
+    puts "Please enter a number (1-9):"
+    user_input = gets.strip
+    index = input_to_index(user_input)
+    if valid_move?(index)
+      token = current_player
+      move(index, token)
+    else
+      turn
+    end
+    display_board
+  end
+def on_game_board?(index)
+  valid_indexes = [0,1,2,3,4,5,6,7,8]
   
-#   if valid_indexes.include?(index)
-#     true
-#   else
-#     false
-#   end
-# end
+  if valid_indexes.include?(index)
+    true
+  else
+    false
+  end
+end
 
 # def valid_move?(board, index)
 #   index.between?(0,8) && !position_taken?(board, index)
