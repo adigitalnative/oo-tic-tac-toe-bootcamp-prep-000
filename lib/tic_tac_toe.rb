@@ -106,5 +106,7 @@ class TicTacToe
       @board[winning_combination[0]]
     end
   end
+  
+  def play
 
 end
