@@ -76,29 +76,12 @@ class TicTacToe
   def valid_move?(index)
     index.between?(0,8) && !position_taken?(@board, index)
   end
-
-
-# def turn_count(board)
-#   counter = 0
-#   board.each do |slot|
-#     if slot != " "
-#       counter += 1
-#     end
-#   end
-#   return counter
-# end
-
-# def current_player(board)
-#   move_count = 0
-#   board.each do |slot|
-#     if slot != " "
-#       move_count += 1
-#     end
-#   end
   
-#   if move_count % 2 == 0
-#     "X"
-#   else
-#     "O"
-#   end
+  def won?(board)
+    WIN_COMBINATIONS.detect do |combo|
+      board[combo[0]] == board[combo[1]] &&
+      board[combo[1]] == board[combo[2]] &&
+      position_taken?(board, combo[0])
+    end
+end
 end
