@@ -13,4 +13,8 @@ class TicTacToe
   def initialize
     @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
+  
+  def display_board
+    puts 
+  end
 end
