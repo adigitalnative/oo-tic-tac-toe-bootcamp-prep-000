@@ -63,15 +63,15 @@ class TicTacToe
     display_board
   end
   
-def on_game_board?(index)
-  valid_indexes = [0,1,2,3,4,5,6,7,8]
+  def on_game_board?(index)
+    valid_indexes = [0,1,2,3,4,5,6,7,8]
   
-  if valid_indexes.include?(index)
-    true
-  else
-    false
+    if valid_indexes.include?(index)
+      true
+    else
+      false
+    end
   end
-end
 
 # def valid_move?(board, index)
 #   index.between?(0,8) && !position_taken?(board, index)
