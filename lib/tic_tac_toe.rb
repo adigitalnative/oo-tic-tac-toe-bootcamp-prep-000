@@ -62,37 +62,100 @@ class TicTacToe
     end
     display_board
   end
+def on_game_board?(index)
+  valid_indexes = [0,1,2,3,4,5,6,7,8]
+  
+  if valid_indexes.include?(index)
+    true
+  else
+    false
+  end
+end
 
-  # def won?
-  #   WIN_COMBINATIONS.any? do |combo|
-  #     if position_taken?(combo[0]) && @board[combo[0]] == @board[combo[1]] && @board[combo[1]] == @board[combo[2]]
-  #       return combo
-  #     end
-  #   end
-  # end
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
+end
 
-  # def full?
-  #   @board.all?{|square| square != " " }
-  # end
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index, current_player(board))
+    display_board(board)
+  else
+    puts "Invalid selection, try again"
+    turn(board)
+  end
+end
 
-  # def draw?
-  #   full? && !won?
-  # end
+def turn_count(board)
+  counter = 0
+  board.each do |slot|
+    if slot != " "
+      counter += 1
+    end
+  end
+  return counter
+end
 
-  # def over?
-  #   won? || draw?
-  # end
+def current_player(board)
+  move_count = 0
+  board.each do |slot|
+    if slot != " "
+      move_count += 1
+    end
+  end
+  
+  if move_count % 2 == 0
+    "X"
+  else
+    "O"
+  end
+end
 
-  # def winner
-  #   if combo = won?
-  #     @board[combo[0]]
-  #   end
-  # end
+# def won?(board)
+#   WIN_COMBINATIONS.detect do |combo|
+#     board[combo[0]] == board[combo[1]] &&
+#     board[combo[1]] == board[combo[2]] &&
+#     position_taken?(board, combo[0])
+#   end
+# end
 
-  # def play
-  #   turn until over?
-  #   puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
-  # end
+# def full?(board)
+#   if board.detect {|s| s == " "}
+#     return false
+#   else
+#     return true
+#   end
+# end
+
+# def draw?(board)
+#   full?(board) && !won?(board)
+# end
+
+# def over?(board)
+#   draw?(board) || won?(board)
+# end
+
+# def winner(board)
+#   if winning_combination = won?(board)
+#     board[winning_combination[0]]
+#   end
+# end
+
+# def play(board)
+#   while !over?(board)
+#     turn(board)
+#   end
+  
+#   if won?(board)
+#     puts "Congratulations #{winner(board)}!"
+#   elsif draw?(board)
+#     puts "Cat's Game!"
+#   end
+# end
+
 
 
 end
